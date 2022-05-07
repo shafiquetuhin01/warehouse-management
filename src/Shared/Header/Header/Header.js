@@ -1,12 +1,11 @@
 import { getAuth, signOut } from "firebase/auth";
 import React from "react";
 import { Link } from "react-router-dom";
-import app from "../../../firebase.init";
+import auth from "../../../firebase.init";
 import logo from "../../../images/Logo.png";
 import { useAuthState } from "react-firebase-hooks/auth";
 import './Header.css';
 
-const auth = getAuth(app);
 const Header = () => {
   const [user] = useAuthState(auth);
 
@@ -23,7 +22,7 @@ const Header = () => {
         <Link to="/about">About</Link>
         <Link to="/blog">Blog</Link>
         {user ? (
-          <button className="bg-primary text-white" onClick={handleSignOut}>Sign out</button>
+          <button className="bg-primary text-white" onClick={handleSignOut}>Sign Out</button>
         ) : (
           <Link to="/login">Login</Link>
         )}

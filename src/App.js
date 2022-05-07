@@ -7,16 +7,24 @@ import Inventory from "./Shared/Body/Inventory/Inventory";
 import Header from "./Shared/Header/Header/Header";
 import Login from "./Shared/Body/Login/Login";
 
+import RequireAuth from "./Shared/RequireAuth/RequireAuth";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 function App() {
-  
   return (
     <div className="App container-fluid bg-secondary">
       <Header></Header>
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/home" element={<Home></Home>}></Route>
-        <Route path="/home" element={<Home></Home>}></Route>
-        <Route path="/inventory" element={<Inventory></Inventory>}></Route>
+        <Route
+          path="/inventory"
+          element={
+            <RequireAuth>
+              <Inventory></Inventory>
+            </RequireAuth>
+          }
+        ></Route>
         <Route path="/about" element={<About></About>}></Route>
         <Route path="/blog" element={<Blog></Blog>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>

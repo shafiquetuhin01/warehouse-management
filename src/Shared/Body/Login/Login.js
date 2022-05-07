@@ -1,48 +1,82 @@
-import React from "react";
-import app from "../../../firebase.init";
-
-import {
-    FacebookAuthProvider,
-    getAuth,
-    GoogleAuthProvider,
-    signInWithPopup,
-  } from "firebase/auth";
-import "bootstrap/dist/css/bootstrap.min.css";
-
-
-const auth = getAuth(app);
-
-
+import React, { useState } from "react";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { FacebookAuthProvider, signInWithPopup } from "firebase/auth";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import auth from "../../../firebase.init";
+import { getAuth } from "firebase/auth";
+import "./Login.css";
 
 const Login = () => {
-  const provider = new GoogleAuthProvider();
-  const fbProvider = new FacebookAuthProvider();
-  const handleSignIn = () => {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        const user = result.user;
-        console.log(user);
-      })
-      .catch((error) => {
-        console.error("tumi error khaiso", error);
-      });
+  
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
+  const handleEmailBlur = (event) => {
+    setEmail(event.target.value);
   };
-  const handleSignInFb = () => {
-    signInWithPopup(auth, fbProvider)
-      .then((result) => {
-        const user = result.user;
-        console.log(user);
-      })
-      .catch((error) => {
-        console.error("tumi error khaiso fb te", error);
-      });
+
+  const handlePasswordBlur = (event) => {
+    setPassword(event.target.value);
   };
+
+  if (user) {
+    navigate(from, { replace: true });
+  }
+//fb sign in
+const handleSignInWithFb = () =>{
+  const provider = new FacebookAuthProvider();
+  const auth = getAuth();
+  signInWithPopup(auth, provider)
+}
+  const handleUserSignIn = (event) => {
+    event.preventDefault();
+    signInWithEmailAndPassword(email, password);
+  };
+
   return (
-    <div>
-      <h2>This is login page</h2>
-      <div style={{ textAlign: "center", padding: "10px " }}>
-        <button onClick={handleSignIn}>Google Sign In</button>
-        <button onClick={handleSignInFb}>Facebook Sign In</button>
+    <div className="form-container">
+      <div>
+        <h2 className="form-title">Login</h2>
+        <form onSubmit={handleUserSignIn}>
+          <div className="input-group">
+            <label htmlFor="email">Email</label>
+            <input
+              onBlur={handleEmailBlur}
+              type="email"
+              name="email"
+              id=""
+              required
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="password">Password</label>
+            <input
+              onBlur={handlePasswordBlur}
+              type="password"
+              name="password"
+              id=""
+              required
+            />
+          </div>
+          <p style={{ color: "red" }}>{error?.message}</p>
+          {loading && <p>Loading...</p>}
+          <input className="form-submit" type="submit" value="Login" />
+        </form>
+        <p>
+          New User?{" "}
+          <Link className="form-link" to="/signup">
+            Create an account
+          </Link>
+        </p>
+      </div>
+      <div>
+        <button onClick={handleSignInWithFb} className="btn btn-primary fw-bold">Sign In with Facebook </button>
       </div>
     </div>
   );
