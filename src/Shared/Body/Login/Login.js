@@ -1,12 +1,14 @@
 import React from "react";
-import app from "./firebase.init";
+import app from "../../../firebase.init";
+
 import {
-  FacebookAuthProvider,
-  getAuth,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from "firebase/auth";
+    FacebookAuthProvider,
+    getAuth,
+    GoogleAuthProvider,
+    signInWithPopup,
+  } from "firebase/auth";
 import "bootstrap/dist/css/bootstrap.min.css";
+
 
 const auth = getAuth(app);
 
