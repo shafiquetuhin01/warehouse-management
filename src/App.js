@@ -9,10 +9,11 @@ import Login from "./Shared/Body/Login/Login";
 
 import RequireAuth from "./Shared/RequireAuth/RequireAuth";
 import "bootstrap/dist/css/bootstrap.min.css";
+import SignUp from "./Shared/Body/SignUp/SignUp";
 
 function App() {
   return (
-    <div className="App container-fluid bg-secondary">
+    <div className="App container-fluid">
       <Header></Header>
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
@@ -28,8 +29,8 @@ function App() {
         <Route path="/about" element={<About></About>}></Route>
         <Route path="/blog" element={<Blog></Blog>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
+        <Route path="/signup" element={<SignUp></SignUp>}></Route>
       </Routes>
-      <Login></Login>
     </div>
   );
 }

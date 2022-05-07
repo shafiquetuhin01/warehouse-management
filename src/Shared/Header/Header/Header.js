@@ -14,7 +14,8 @@ const Header = () => {
   };
 
   return (
-    <nav className="header d-flex justify-content-between align-items-center container bg-dark">
+    <div className="bg-dark container-fluid">
+<nav className="header d-flex justify-content-between align-items-center container bg-dark">
       <img className="img-fluid" src={logo} alt="" />
       <div className="d-flex">
         <Link to="/">Home</Link>
@@ -28,6 +29,8 @@ const Header = () => {
         )}
       </div>
     </nav>
+    </div>
+    
   );
 };
 

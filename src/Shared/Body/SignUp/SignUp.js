@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import auth from '../../firebase.init';
+import auth from '../../../firebase.init';
 
 const SignUp = () => {
     const [email, setEmail] = useState('');
@@ -25,7 +25,7 @@ const SignUp = () => {
     }
 
     if(user){
-        navigate('/shop');
+        navigate('/inventory');
     }
 
     const handleCreateUser = event =>{
