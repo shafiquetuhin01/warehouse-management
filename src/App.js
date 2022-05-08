@@ -11,6 +11,7 @@ import RequireAuth from "./Shared/RequireAuth/RequireAuth";
 import "bootstrap/dist/css/bootstrap.min.css";
 import SignUp from "./Shared/Body/SignUp/SignUp";
 import Footer from "./Shared/Footer/Footer/Footer";
+import NotFound from "./Shared/Body/NotFound/NotFound";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/blog" element={<Blog></Blog>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/signup" element={<SignUp></SignUp>}></Route>
+        <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
     </div>
