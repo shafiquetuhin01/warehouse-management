@@ -1,4 +1,22 @@
-# Getting Started with Create React App
+# Overview of my app
+
+* This project done as under:
+    * React js
+    * Bootstrap
+    * Firebase
+    * Mongodb
+    * Heroku
+    * & custom css
+
+* You will find all the clean in this project.
+* I will fulfill your extra code related requirements as you want.
+* Client satisfaction is my main motive.
+* I am always ready to any irrelevant mistakes. I will recover it as soon as possible.
+* After all you will get a fresh and cool satisfaction.
+
+Here is the my live website link, you can find out:[Create React App](https://shafique-firm-house.web.app)
+
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
