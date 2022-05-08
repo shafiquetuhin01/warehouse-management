@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import img from "../../../images/hero.jpg";
 import About from "../About/About";
+import OtherServices from "../OtherServices/OtherServices";
 import Product from "../Product/Product";
 
 const Home = () => {
@@ -19,8 +20,8 @@ const Home = () => {
         src={img}
         alt=""
       />
-      <h2 className="text-center">My Inventories</h2>
-      <div className="d-flex">
+      <h2 className="text-center mt-3">My Inventories</h2>
+      <div className="d-flex justify-content-center m-3">
         <div className="row">
           {products.map((product) => (
             <Product key={product._id} product={product}></Product>
@@ -29,6 +30,7 @@ const Home = () => {
         
       </div>
       <About></About>
+      <OtherServices></OtherServices>
     </div>
   );
 };
