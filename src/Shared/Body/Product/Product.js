@@ -3,9 +3,10 @@ import React from 'react';
 const Product = ({product}) => {
     const {url,name,_id,price,qty,supplier} = product;
     return (
-        <div>
+        <div className='container col-md-6'>
             <h4>Name: {name}</h4>
-            <img src={url} alt="" />
+            <img style={{width:'450px',height:'350px'}} src={url} alt="" />
+       
         </div>
     );
 };

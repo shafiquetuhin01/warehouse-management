@@ -10,6 +10,7 @@ import Login from "./Shared/Body/Login/Login";
 import RequireAuth from "./Shared/RequireAuth/RequireAuth";
 import "bootstrap/dist/css/bootstrap.min.css";
 import SignUp from "./Shared/Body/SignUp/SignUp";
+import Footer from "./Shared/Footer/Footer/Footer";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/signup" element={<SignUp></SignUp>}></Route>
       </Routes>
+      <Footer></Footer>
     </div>
   );
 }
