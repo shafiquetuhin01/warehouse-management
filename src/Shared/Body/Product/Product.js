@@ -1,14 +1,29 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import Inventory from "../Inventory/Inventory";
+import React, { useEffect } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useLocation, useNavigate } from "react-router-dom";
+import auth from "../../../firebase.init";
+import Loading from "../Items/Loading";
 
 const Product = ({ product }) => {
+  const [user, loading] = useAuthState(auth);
+  const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
   const { url, name, _id, price, qty, description, supplier } = product;
 
   // manage stock button
   const handleManage = () => {
-    window.location = "/inventory";
+    if (user) {
+      navigate('/inventory');
+    }
+    else{
+      navigate('/login');
+    }
+    
   };
+  if (loading) {
+    return <Loading></Loading>;
+  }
   return (
     <div
       style={{ border: "1px solid gray" }}
