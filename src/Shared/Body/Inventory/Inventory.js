@@ -4,9 +4,11 @@ import Product from "../Product/Product";
 const Inventory = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch("https://morning-peak-32661.herokuapp.com/collection")
+
+    // fetch("https://morning-peak-32661.herokuapp.com/collection")
+    fetch("http://localhost:5000/collection")
       .then((res) => res.json())
-      .then((data) => setProducts(data.slice(0, 6)));
+      .then((data) => setProducts(data));
   }, []);
   return (
     <div className="container text-center">

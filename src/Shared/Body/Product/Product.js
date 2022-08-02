@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
@@ -11,16 +11,10 @@ const Product = ({ product }) => {
   let from = location.state?.from?.pathname || "/";
   const { url, name, _id, price, qty, description, supplier } = product;
 
-  // manage stock button
-  const handleManage = () => {
-    if (user) {
-      navigate('/inventory');
-    }
-    else{
-      navigate('/login');
-    }
-    
-  };
+  const handleManage = (id) => {
+  
+  navigate(`/product/${id}`)
+  }
   if (loading) {
     return <Loading></Loading>;
   }
@@ -37,7 +31,7 @@ const Product = ({ product }) => {
       <h4>Price: {price}</h4>
       <h5>Quantity: {qty}</h5>
       <h5>Supplier Name: {supplier}</h5>
-      <button onClick={handleManage} className="btn btn-primary mb-2">
+      <button onClick={()=>handleManage(_id)} className="btn btn-primary mb-2">
         Manage Stock
       </button>
     </div>

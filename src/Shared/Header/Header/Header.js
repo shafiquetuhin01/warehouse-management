@@ -24,8 +24,8 @@ const Header = () => {
           <Link to="/blog">Blog</Link>
           {user ? (
             <div className="d-flex items-center">
-              <Link to="/manage">Manage Items</Link>
-              <Link to="/add">Add Item</Link>
+              <Link to="/manageitem">Manage Items</Link>
+              <Link to="/additem">Add Item</Link>
               <Link to="/myitems">My Items</Link>
               <button className="bg-primary text-white" onClick={handleSignOut}>
                 Sign Out

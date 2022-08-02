@@ -12,6 +12,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import SignUp from "./Shared/Body/SignUp/SignUp";
 import Footer from "./Shared/Footer/Footer/Footer";
 import NotFound from "./Shared/Body/NotFound/NotFound";
+import ProductDetail from "./Shared/Body/ProductDetail/ProductDetail";
+import CheckOut from "./Shared/Body/CheckOut/CheckOut";
+import Order from "./Shared/Body/Order/Order";
+import AddItem from "./Shared/Body/AddItem/AddItem";
+import ManageItem from "./Shared/Body/ManageItem/ManageItem";
 
 function App() {
   return (
@@ -20,6 +25,27 @@ function App() {
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/home" element={<Home></Home>}></Route>
+        <Route path="/product/:productId" element={<ProductDetail/>}></Route>
+        <Route path="/checkout" element={
+          <RequireAuth>
+            <CheckOut/>
+          </RequireAuth>
+        }></Route>
+        <Route path="/additem" element={
+          <RequireAuth>
+            <AddItem/>
+          </RequireAuth>
+        }></Route>
+        <Route path="/manageitem" element={
+          <RequireAuth>
+            <ManageItem/>
+          </RequireAuth>
+        }></Route>
+        <Route path="/orders" element={
+          <RequireAuth>
+            <Order/>
+          </RequireAuth>
+        }></Route>
         <Route
           path="/inventory"
           element={
