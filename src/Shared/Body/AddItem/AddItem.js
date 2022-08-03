@@ -6,7 +6,7 @@ const AddItem = () => {
     
     const onSubmit = data => {
         console.log(data);
-        const url = `http://localhost:5000/collection`;
+        const url = `https://morning-peak-32661.herokuapp.com/collection`;
         fetch(url, {
             method: 'POST',
             headers: {

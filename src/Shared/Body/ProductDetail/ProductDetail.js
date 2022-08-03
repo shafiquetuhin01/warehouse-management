@@ -7,7 +7,7 @@ const ProductDetail = () => {
   const { productId } = useParams();
   const [product, setProduct] = useState({});
   useEffect(() => {
-    const url = `http://localhost:5000/collection/${productId}`;
+    const url = `https://morning-peak-32661.herokuapp.com/collection/${productId}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setProduct(data));
